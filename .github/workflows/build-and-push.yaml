@@ -33,9 +33,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}
-          tags: |
-            type=sha,format=long
-            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+          tags: type=sha,format=short
 
       - name: 🏗️ Build and push docker image to container repository (GHCR)
         uses: docker/build-push-action@v5
